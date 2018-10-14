@@ -1,0 +1,23 @@
+라즈베리파이에서 직접 실행하기.01  : Ch01011_ManualLedOnOffOnRaspberryPi3 : 
+라즈베리파이에서 직접 LED ON/OFF 하기 :
+그림 : https://drive.google.com/open?id=1N7ojwGgwrXB1dCX3lZjxvFzkq0ENY5BR 
+http://bluexmas.tistory.com/454 
+pi@raspberrypi:/sys/class/gpio $ sudo su
+root@raspberrypi:/sys/class/gpio# echo 17 > /sys/class/gpio/export
+root@raspberrypi:/sys/class/gpio# ls -l
+합계 0
+-rwxrwx--- 1 root gpio 4096 10월  2 11:11 export
+lrwxrwxrwx 1 root gpio    0 10월  2 11:11 gpio17 -> ../../devices/platform/soc/3f200000.gpio/gpio/gpio17
+lrwxrwxrwx 1 root gpio    0 10월  1 15:25 gpiochip0 -> ../../devices/platform/soc/3f200000.gpio/gpio/gpiochip0
+lrwxrwxrwx 1 root gpio    0 10월  1 15:25 gpiochip100 -> ../../devices/platform/soc/soc:virtgpio/gpio/gpiochip100
+-rwxrwx--- 1 root gpio 4096 10월  2 10:44 unexport
+root@raspberrypi:/sys/class/gpio# echo out > /sys/class/gpio/gpio17/direction
+root@raspberrypi:/sys/class/gpio# echo 1 > /sys/class/gpio/gpio17/value
+root@raspberrypi:/sys/class/gpio# echo 0 > /sys/class/gpio/gpio17/value
+root@raspberrypi:/sys/class/gpio# echo 17 > /sys/class/gpio/unexport
+root@raspberrypi:/sys/class/gpio# ls -l
+합계 0
+-rwxrwx--- 1 root gpio 4096 10월  2 11:11 export
+lrwxrwxrwx 1 root gpio    0 10월  1 15:25 gpiochip0 -> ../../devices/platform/soc/3f200000.gpio/gpio/gpiochip0
+lrwxrwxrwx 1 root gpio    0 10월  1 15:25 gpiochip100 -> ../../devices/platform/soc/soc:virtgpio/gpio/gpiochip100
+-rwxrwx--- 1 root gpio 4096 10월  2 11:14 unexport
